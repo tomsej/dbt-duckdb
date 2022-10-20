@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-from setuptools import find_packages
-from distutils.core import setup
 import os
 import re
+from distutils.core import setup
+
+from setuptools import find_namespace_packages
 
 this_directory = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(this_directory, "README.md")) as f:
@@ -35,14 +36,8 @@ setup(
     author="Josh Wills",
     author_email="joshwills+dbt@gmail.com",
     url="https://github.com/jwills/dbt-duckdb",
-    packages=find_packages(),
-    package_data={
-        "dbt": [
-            "include/duckdb/dbt_project.yml",
-            "include/duckdb/macros/*.sql",
-            "include/duckdb/macros/**/*.sql",
-        ]
-    },
+    packages=find_namespace_packages(include=["dbt", "dbt.*"]),
+    include_package_data=True,
     install_requires=[
         "dbt-core>=1.2.0",
         "duckdb>=0.3.2",
