@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import os
 import re
-from distutils.core import setup
 
-from setuptools import find_namespace_packages
+from setuptools import find_namespace_packages, setup
 
 this_directory = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(this_directory, "README.md")) as f:
